@@ -8,26 +8,32 @@ const website_btn = document.querySelector("#website_btn");
 const paragraph_btn = document.querySelector("#paragraph_btn");
 const section_btn = document.querySelector("#section_btn");
 const date_btn = document.querySelector("#date_btn");
-
+const form = document.createElement('form');
 // Form Elements
-
-const formGroup = document.createElement('div');
-formGroup.className = 'form-group';
 
 
 // HTML Form Tag
 function createForm(){
-    const form = document.createElement('form');
     form.setAttribute('name', 'myForm');
     form.setAttribute('method', 'GET');
     form.setAttribute('action', " ");
     preview_section.appendChild(form);
-    form.appendChild(formGroup);
+    
 }
 createForm();
 
 // Create Name Element
 function nameInput(){
+
+    const div = document.createElement('div');
+    div.setAttribute('class', 'input-group');
+    const span = document.createElement('span');
+    span.setAttribute('class', 'input-group-addon');
+    span.setAttribute('id', 'delete_section');
+    span.innerText = "delete";
+
+ 
+
     const label = document.createElement('label');
     label.setAttribute('for', 'nameInput');
     label.innerText="Name";
@@ -37,8 +43,22 @@ function nameInput(){
     input.setAttribute('class', 'form-control');
     input.setAttribute('id', 'nameInput');
 
+    const formGroup = document.createElement('div');
+    formGroup.className = 'form-group';
+
+    formGroup.setAttribute('id', 'nameElement')
+
+    form.appendChild(formGroup);
     formGroup.appendChild(label);
-    formGroup.appendChild(input);
+    formGroup.appendChild(div);
+    div.appendChild(span);
+    div.appendChild(input);
+
+    span.addEventListener('click', ()=>{
+        const nameElement = document.querySelector('#nameElement');
+        form.removeChild(nameElement);
+
+    });
 }
 
 // Create Email Element
@@ -51,6 +71,12 @@ function emailInput(){
     input.setAttribute('type', 'email');
     input.setAttribute('class', 'form-control');
     input.setAttribute('id', 'email');
+
+    const formGroup = document.createElement('div');
+    formGroup.className = 'form-group';
+    formGroup.setAttribute('id', 'emailElement')
+
+    form.appendChild(formGroup);
 
     formGroup.appendChild(label);
     formGroup.appendChild(input);
@@ -67,6 +93,12 @@ function address(){
     input.setAttribute('class', 'form-control');
     input.setAttribute('id', 'address');
 
+    const formGroup = document.createElement('div');
+    formGroup.className = 'form-group';
+
+    formGroup.setAttribute('id', 'addressElement')
+    form.appendChild(formGroup);
+
     formGroup.appendChild(label);
     formGroup.appendChild(input);
 }
@@ -82,6 +114,12 @@ function phoneNumber(){
     input.setAttribute('class', 'form-control');
     input.setAttribute('id', 'phone_number');
 
+    const formGroup = document.createElement('div');
+    formGroup.className = 'form-group';
+
+    formGroup.setAttribute('id', 'phoneElement')
+    form.appendChild(formGroup);
+
     formGroup.appendChild(label);
     formGroup.appendChild(input);
 }
@@ -96,6 +134,12 @@ function website(){
     input.setAttribute('type', 'text');
     input.setAttribute('class', 'form-control');
     input.setAttribute('id', 'website');
+
+    const formGroup = document.createElement('div');
+    formGroup.className = 'form-group';
+
+    formGroup.setAttribute('id', 'websiteElement')
+    form.appendChild(formGroup);
 
     formGroup.appendChild(label);
     formGroup.appendChild(input);
@@ -117,6 +161,11 @@ function createTextArea(){
     textArea.setAttribute('class', 'form-control');
     textArea.setAttribute('id', 'website');
     textArea.setAttribute('rows', "5");
+
+    const formGroup = document.createElement('div');
+    formGroup.className = 'form-group';
+    formGroup.setAttribute('id', 'textAreaElement')
+    form.appendChild(formGroup);
     
     formGroup.appendChild(label);
     formGroup.appendChild(input);
@@ -129,6 +178,11 @@ function CreateSectionTitle(){
     sectionTitle.setAttribute('for', 'section_Title');
     sectionTitle.setAttribute('class', 'text-center section_title');
     sectionTitle.innerText="New Section";
+
+    const formGroup = document.createElement('div');
+    formGroup.className = 'form-group';
+    formGroup.setAttribute('id', 'sectionTitleElement')
+    form.appendChild(formGroup);
 
     formGroup.appendChild(sectionTitle);
 }
@@ -145,6 +199,12 @@ function dateInput(){
     input.setAttribute('id', 'dateInput');
     input.setAttribute('value', '2017-06-01')
 
+    const formGroup = document.createElement('div');
+    formGroup.className = 'form-group';
+
+    formGroup.setAttribute('id', 'dateElement')
+    form.appendChild(formGroup);
+
     formGroup.appendChild(label);
     formGroup.appendChild(input);
 }
@@ -157,3 +217,15 @@ website_btn.addEventListener('click', website);
 paragraph_btn.addEventListener('click', createTextArea);
 section_btn.addEventListener('click', CreateSectionTitle);
 date_btn.addEventListener('click', dateInput);
+
+function clearForm(){
+const clearBtn= document.createElement('button');
+clearBtn.setAttribute('type', 'button');
+clearBtn.setAttribute('id', 'clearForm');
+clearBtn.setAttribute('class', 'btn btn-default btn-danger');
+clearBtn.innerText="Clear Form";
+preview_section.appendChild(clearBtn);
+}
+
+console.log(preview_section);
+
