@@ -1,0 +1,43 @@
+body{
+    margin: 0 auto;
+}
+
+h1{
+    font-size: 40px;
+    margin-top:0 !important;
+}
+.main_header{
+    background-color:#ee5253;
+    color: white;
+    padding:20px 0px;
+}
+
+/* Elements Section */
+.elements_container{
+    background-color:#f1f2f6;
+    min-height: 100vh;
+}
+
+.form_elements{
+    padding: 0px 40px;
+    border-radius: 0;
+}
+
+/* Form Preview Section */
+.preview_container{
+    min-height: 500px;
+    padding:20px;
+}
+
+.section_title{
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 1px solid grey;
+    width:100%;
+    margin: 20px 0px;
+}
+
+textarea{
+    max-width:100%;
+    min-width:100%;
+}
