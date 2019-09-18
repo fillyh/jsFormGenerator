@@ -13,47 +13,52 @@
     <div class="container-fluid">
         <div class="row ">
             <div class="col-md-12 main_header">
-                <h1 class="text-center my_header">Form Generator</h1>
+                <h1 class="text-center my_header">Create-A-Form</h1>
             </div>
         </div>
 
         <!-- Elements Container -->
 
-        <div class="row">
-            <div class="col-md-3 elements_container">
-                <aside class="element_container">
-                    <!-- <div class="row instructions text-center">
-                        <h3>Title</h3>
-                        <p>description</p>
-                    </div> -->
-                    <div class="row">
-                        <div class="col-md-12">
-                                <div class="btn-group-vertical btn-group-lg form_elements center-block my_buttons" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-default form_elements" id="name_btn">Name</button>
-                                        <button type="button" class="btn btn-default form_elements" id="email_btn">Email</button>
-                                        <button type="button" class="btn btn-default form_elements" id="address_btn">Address</button>
-                                        <button type="button" class="btn btn-default form_elements" id="phone_btn">Phone</button>
-                                        <button type="button" class="btn btn-default form_elements" id="website_btn">Website</button>
-                                        <button type="button" class="btn btn-default form_elements" id="paragraph_btn">Paragraph</button>
-                                        <button type="button" class="btn btn-default form_elements" id="section_btn">Section Title</button>
-                                        <button type="button" class="btn btn-default form_elements" id="date_btn">Date</button>
-                                      </div>
+        <div class="container">
+                <div class="row">
+                        <div class="col-md-3 elements_container">
+                            <aside class="element_container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                            <div class="btn-group-vertical btn-group-lg form_elements center-block my_buttons" role="group" aria-label="...">
+                                                    <button type="button" class="btn btn-default form_elements" id="title_btn"><i class="fas fa-heading form_icons"></i>Form Title</button>
+                                                    <button type="button" class="btn btn-default form_elements" id="name_btn"><i class="fas fa-user form_icons"></i>Name</button>
+                                                    <button type="button" class="btn btn-default form_elements" id="email_btn"><i class="fas fa-at form_icons"></i>Email</button>
+                                                    <button type="button" class="btn btn-default form_elements" id="address_btn"><i class="fas fa-home form_icons"></i>Address</button>
+                                                    <button type="button" class="btn btn-default form_elements" id="phone_btn"><i class="fas fa-mobile-alt form_icons"></i>Phone</button>
+                                                    <button type="button" class="btn btn-default form_elements" id="website_btn"><i class="fas fa-desktop form_icons"></i>Website</button>
+                                                    <button type="button" class="btn btn-default form_elements" id="paragraph_btn"><i class="fas fa-paragraph form_icons"></i>Paragraph</button>
+                                                    <button type="button" class="btn btn-default form_elements" id="section_btn"><i class="fas fa-font form_icons"></i>Section Title</button>
+                                                    <button type="button" class="btn btn-default form_elements" id="date_btn"><i class="far fa-calendar-alt form_icons"></i>Date</button>
+                                                    <button type="button" class="btn btn-success form_elements" id="formPreview"><i class="far fa-eye form_icons"></i>Preview Form</button>
+                                                    <button type="button" class="btn btn-danger form_elements" id="clearForm"><i class="far fa-eye form_icons"></i>Clear Form Form</button>
+                                                  </div>
+                                    </div>
+                                </div>
+                            </aside>
                         </div>
-                    </div>
-                </aside>
-            </div>
-        
-        
-        <!-- Form Preview -->
-            <section class="col-md-9">
-                <div class="preview_container">
-                        <div class="preview_element" id="preview_section">
                     
+                    
+                    <!-- Form Preview -->
+                        <section class="col-md-9">
+                            <div class="preview_container" id="form_container">
+                                    <h2 class= "text-center form_placeholder" id="formPlaceholder">Add some elements!</h2>
+                                    <div class="preview_element" id="preview_section">
+                                       
+                                
+                                        </div>
                             </div>
-                </div>
+            
+                        </section>
+                    </div>
 
-            </section>
         </div>
+
     </div>
 
     

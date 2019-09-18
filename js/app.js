@@ -1,5 +1,6 @@
+const form_container = document.querySelector('#form_container');
 const preview_section = document.querySelector("#preview_section");
-
+// const titleSection = document.querySelector('#formTitle');
 const name_btn = document.querySelector("#name_btn");
 const email_btn = document.querySelector("#email_btn");
 const address_btn = document.querySelector("#address_btn");
@@ -9,7 +10,19 @@ const paragraph_btn = document.querySelector("#paragraph_btn");
 const section_btn = document.querySelector("#section_btn");
 const date_btn = document.querySelector("#date_btn");
 const form = document.createElement('form');
+const title_btn = document.querySelector('#title_btn');
+const form_placeholder = document.querySelector('#formPlaceholder');
 // Form Elements
+
+name_btn.addEventListener('click', nameInput);
+email_btn.addEventListener('click', emailInput);
+address_btn.addEventListener('click', address);
+phone_btn.addEventListener('click', phoneNumber);
+website_btn.addEventListener('click', website);
+paragraph_btn.addEventListener('click', createTextArea);
+section_btn.addEventListener('click', CreateSectionTitle);
+date_btn.addEventListener('click', dateInput);
+title_btn.addEventListener('click', createFormTitle);
 
 
 // HTML Form Tag
@@ -26,13 +39,11 @@ createForm();
 function nameInput(){
 
     const div = document.createElement('div');
-    div.setAttribute('class', 'input-group');
-    const span = document.createElement('span');
-    span.setAttribute('class', 'input-group-addon');
-    span.setAttribute('id', 'delete_section');
-    span.innerText = "delete";
-
- 
+    div.setAttribute('class', 'form-group');
+    // const span = document.createElement('span');
+    // span.setAttribute('class', 'input-group-addon');
+    // span.setAttribute('id', 'delete_section');
+    // span.innerText = "delete";
 
     const label = document.createElement('label');
     label.setAttribute('for', 'nameInput');
@@ -51,14 +62,16 @@ function nameInput(){
     form.appendChild(formGroup);
     formGroup.appendChild(label);
     formGroup.appendChild(div);
-    div.appendChild(span);
+    // div.appendChild(span);
     div.appendChild(input);
 
-    span.addEventListener('click', ()=>{
-        const nameElement = document.querySelector('#nameElement');
-        form.removeChild(nameElement);
+    // span.addEventListener('click', ()=>{
+    //     const nameElement = document.querySelector('#nameElement');
+    //     form.removeChild(nameElement);
 
-    });
+    // });
+
+    form_placeholder.style.display = "none";
 }
 
 // Create Email Element
@@ -76,10 +89,13 @@ function emailInput(){
     formGroup.className = 'form-group';
     formGroup.setAttribute('id', 'emailElement')
 
+
     form.appendChild(formGroup);
 
     formGroup.appendChild(label);
     formGroup.appendChild(input);
+
+    form_placeholder.style.display = "none";
 }
 
 // Create Address Element
@@ -101,6 +117,8 @@ function address(){
 
     formGroup.appendChild(label);
     formGroup.appendChild(input);
+
+    form_placeholder.style.display = "none";
 }
 
 // Create Phone Number Element
@@ -122,6 +140,7 @@ function phoneNumber(){
 
     formGroup.appendChild(label);
     formGroup.appendChild(input);
+    form_placeholder.style.display = "none";
 }
 
 // Create Web address Element
@@ -143,6 +162,7 @@ function website(){
 
     formGroup.appendChild(label);
     formGroup.appendChild(input);
+    form_placeholder.style.display = "none";
 }
 
 // Create Text Area Element
@@ -170,14 +190,17 @@ function createTextArea(){
     formGroup.appendChild(label);
     formGroup.appendChild(input);
     formGroup.appendChild(textArea);
+
+    form_placeholder.style.display = "none";
 }
 
 // Create Section Title Element
 function CreateSectionTitle(){
     const sectionTitle = document.createElement('label');
     sectionTitle.setAttribute('for', 'section_Title');
-    sectionTitle.setAttribute('class', 'text-center section_title');
-    sectionTitle.innerText="New Section";
+    sectionTitle.setAttribute('class', 'section_title');
+    sectionTitle.setAttribute('contenteditable', 'true');
+    sectionTitle.innerText="Untitled";
 
     const formGroup = document.createElement('div');
     formGroup.className = 'form-group';
@@ -185,6 +208,8 @@ function CreateSectionTitle(){
     form.appendChild(formGroup);
 
     formGroup.appendChild(sectionTitle);
+
+    form_placeholder.style.display = "none";
 }
 
 // Create Date Element
@@ -207,25 +232,73 @@ function dateInput(){
 
     formGroup.appendChild(label);
     formGroup.appendChild(input);
+
+    form_placeholder.style.display = "none";
 }
 
-name_btn.addEventListener('click', nameInput);
-email_btn.addEventListener('click', emailInput);
-address_btn.addEventListener('click', address);
-phone_btn.addEventListener('click', phoneNumber);
-website_btn.addEventListener('click', website);
-paragraph_btn.addEventListener('click', createTextArea);
-section_btn.addEventListener('click', CreateSectionTitle);
-date_btn.addEventListener('click', dateInput);
 
-function clearForm(){
-const clearBtn= document.createElement('button');
-clearBtn.setAttribute('type', 'button');
-clearBtn.setAttribute('id', 'clearForm');
-clearBtn.setAttribute('class', 'btn btn-default btn-danger');
-clearBtn.innerText="Clear Form";
-preview_section.appendChild(clearBtn);
+function createFormTitle(){
+    const rowDiv = document.createElement('div');
+    rowDiv.setAttribute('class', 'row form_title');
+    rowDiv.setAttribute('id', 'formTitleMain');
+    const colMdDiv = document.createElement('div');
+    colMdDiv.setAttribute('class', 'col-md-12');
+    colMdDiv.setAttribute('id', 'formTitle');
+
+    const h1 = document.createElement('h1');
+    h1.setAttribute('contenteditable', 'true');
+    h1.innerText="Form Title";
+    colMdDiv.appendChild(h1);
+    rowDiv.appendChild(colMdDiv);
+    preview_section.insertBefore(rowDiv, form);
+
+    rowDiv.style.background = "#f1f2f6";
+    form_placeholder.style.display = "none";
+
+    
 }
 
-console.log(preview_section);
+function launchModal(){
+    const modalMainDiv = document.createElement('div');
+    modalMainDiv.setAttribute('class', 'modal');
+    modalMainDiv.setAttribute('id', 'mainModal');
 
+    const modalContentDiv = document.createElement('div');
+    modalContentDiv.setAttribute('class', 'modal-content');
+
+    const span = document.createElement('span');
+    span.setAttribute('class', 'close');
+    span.innerHTML = '&times;';
+
+    modalContentDiv.appendChild(span);
+    modalContentDiv.appendChild(preview_section);
+    modalMainDiv.appendChild(modalContentDiv);
+    form_container.appendChild(modalMainDiv);
+
+    span.addEventListener('click', () =>{
+        modalMainDiv.style.display = "none";
+        form_container.appendChild(preview_section);
+    });
+
+    window.onclick = function(event) {
+        if (event.target == modalMainDiv) {
+          modalMainDiv.style.display = "none";
+          form_container.appendChild(preview_section);
+        };
+      }
+};
+
+const formPreviewBtn = document.querySelector('#formPreview');
+formPreviewBtn.addEventListener('click', launchModal);
+
+
+// function clearForm(){
+//     const formGroupAll = document.getElementsByClassName('form-group');
+//     const formTitleAll = document.getElementById('#formTitleMain');
+//     form.removeChild(formGroupAll);
+//     preview_section.removeChild(formTitleAll);
+
+// }
+
+// const clearFormBtn = document.querySelector('#clearForm');
+// clearFormBtn.addEventListener('click', clearForm);
